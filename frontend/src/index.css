@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+
+  /* Enhanced base styles for accessibility */
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-size: 18px; /* Increased base font size from 16px to 18px */
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    line-height: 1.7; /* Increased line height for better readability */
+    letter-spacing: 0.01em; /* Slight letter spacing for clarity */
+  }
+
+  /* High contrast mode */
+  .high-contrast {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 85%;
+  }
+
+  /* Large text mode */
+  .large-text {
+    font-size: 1.25rem;
+  }
+
+  .large-text h1 {
+    font-size: 2.5rem;
+  }
+  .large-text h2 {
+    font-size: 2rem;
+  }
+  .large-text h3 {
+    font-size: 1.75rem;
+  }
+  .large-text .text-sm {
+    font-size: 1rem;
+  }
+  .large-text .text-xs {
+    font-size: 0.875rem;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground));
+    border-radius: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--foreground));
+  }
+
+  /* Enhanced button styles for accessibility */
+  .btn-large {
+    @apply px-8 py-4 text-lg font-semibold min-h-[3rem] rounded-xl;
+  }
+
+  .btn-xl {
+    @apply px-10 py-5 text-xl font-bold min-h-[4rem] rounded-2xl;
+  }
+
+  /* Focus indicators for keyboard navigation */
+  .focus-enhanced:focus {
+    @apply ring-4 ring-primary ring-offset-4 ring-offset-background outline-none;
+  }
+
+  /* High visibility status indicators */
+  .status-indicator {
+    @apply relative inline-flex h-4 w-4 rounded-full animate-pulse;
+  }
+
+  .status-indicator::after {
+    @apply absolute inset-0 rounded-full animate-ping;
+    content: "";
+    background: inherit;
+  }
+}
+
+/* Leaflet map styles with enhanced visibility */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  border: 2px solid hsl(var(--border));
+}
+
+.leaflet-control {
+  border: 2px solid hsl(var(--border)) !important;
+  border-radius: 8px !important;
+  font-size: 1rem !important;
+}
+
+.leaflet-control-zoom a {
+  width: 40px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+  font-size: 1.5rem !important;
+  font-weight: bold !important;
+}
+
+/* Loading skeleton animations */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--accent)) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200px 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+/* Enhanced modal and dialog styles */
+.dialog-overlay {
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* Improved toast notifications */
+.toast-enhanced {
+  min-height: 4rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  border-width: 2px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Voice feedback button */
+.voice-button {
+  @apply fixed bottom-6 right-6 w-16 h-16 bg-primary text-primary-foreground rounded-full shadow-lg z-50;
+  @apply flex items-center justify-center hover:scale-110 transition-transform;
+}
+
+.voice-button:hover {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+}
+
+/* Print styles for accessibility */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    font-size: 14pt;
+    line-height: 1.6;
+    color: black !important;
+    background: white !important;
+  }
+}
