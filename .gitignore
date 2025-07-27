@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.venv/
+env/
+venv/
+ENV/
+*.sqlite3
+*.db
+
+# Byte-compiled / optimized / DLL files
+*.so
+*.dll
+*.dylib
+*.pyd
+
+# Logs
+*.log
+
+# Google Cloud credentials
+google_vision_credentials.json
+
+# VSCode / IDEs
+.vscode/
+.idea/
+
+# OS-generated
+.DS_Store
+Thumbs.db
+
+# Pip/Poetry
+pip-wheel-metadata/
+*.egg-info/
+dist/
+build/
+
+# Test/output artifacts
+*.bak
+*.tmp
+*.swp
+
+# Pytest
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Docker
+*.pid
+*.tar
